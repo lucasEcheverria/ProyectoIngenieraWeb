@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class Genero(models.Model):
     #Género musical.
+    id = models.IntegerField(default=0, primary_key=True)
     nombre = models.CharField(max_length=25)
 
     def __str__(self):
