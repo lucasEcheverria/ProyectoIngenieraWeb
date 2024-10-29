@@ -15,7 +15,7 @@ def listaGeneros(request):
 def detalleGeneros(request, id_genero):
     try:
         genero = Genero.objects.get(pk=id_genero)
-        artistas = genero.genero.all()
+        artistas = genero.artistas.all()
 
         cadenaDeTexto = f"{genero.nombre} - ID: {genero.id}\n"
 
@@ -38,7 +38,7 @@ def listaArtistas(request):
 def detalleArtistas(request, id_artista):
     try:
         artista = Artista.objects.get(pk=id_artista)
-        canciones = artista.autor.all()
+        canciones = artista.canciones.all()
 
         cadenaDeTexto = f"{artista.nombre} - ID: {artista.id}\n"
 
@@ -54,6 +54,14 @@ def detalleArtistas(request, id_artista):
         return HttpResponseNotFound("Artista no encontrado")
 
 def listaCanciones(request):
-    canciones = Genero.objects.order_by('fechaLanzamiento')
-    nombre_canciones = ', '.join([Cancion.nombre for cancion in canciones])
+    canciones = Cancion.objects.order_by('id')
+    nombre_canciones = ', '.join([cancion.nombre for cancion in canciones])
     return HttpResponse(nombre_canciones)
+
+def detalleCanciones(request,id_cancion):
+    try:
+        cancion = Cancion.objects.get(pk = id_cancion)
+        cadenaDeTexto = f"{cancion.nombre} - ID: {cancion.fechaLanzamiento} - Artista: {cancion.artista}\n"
+        return HttpResponse(cadenaDeTexto)
+    except cancion.DoesNotExist:
+        return HttpResponseNotFound("Cancion no encontrada")

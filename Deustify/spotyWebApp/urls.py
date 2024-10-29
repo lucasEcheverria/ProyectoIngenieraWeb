@@ -8,6 +8,7 @@ urlpatterns = [
     path('generos',views.listaGeneros, name= 'listaGeneros'),
     path('generos/<int:id_genero>/', views.detalleGeneros, name='detalleGenero'),
     path('canciones',views.listaCanciones, name= 'listaCanciones'),
+    path('canciones/<int:id_cancion>/',views.detalleCanciones, name= 'listaCanciones'),
     path('artistas',views.listaArtistas, name= 'listaArtistas'),
     path('artistas/<int:id_artista>/', views.detalleArtistas, name='detalleArtista'),
 ]
