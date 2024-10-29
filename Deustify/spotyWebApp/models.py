@@ -13,7 +13,7 @@ class Artista(models.Model):
     #Artista que compone canciones.
     nombre = models.CharField(max_length=25)
     id = models.IntegerField(default=0,primary_key=True)
-    genero = models.ForeignKey(Genero, related_name="genero", on_delete=models.CASCADE)
+    genero = models.ForeignKey(Genero, related_name="artistas", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre
@@ -22,7 +22,7 @@ class Cancion(models.Model):
     #Canción perteneciente a un artista.
     nombre = models.CharField(max_length=25)
     fechaLanzamiento = models.DateField()
-    artista = models.ForeignKey(Artista, related_name="autor", on_delete=models.CASCADE)
+    artista = models.ForeignKey(Artista, related_name="canciones", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre 
