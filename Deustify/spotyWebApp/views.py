@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Genero, Artista, Cancion
 # Create your views here.
 
@@ -13,22 +14,9 @@ def listaGeneros(request):
     return HttpResponse(nombre_generos)
 
 def detalleGeneros(request, id_genero):
-    try:
-        genero = Genero.objects.get(pk=id_genero)
-        artistas = genero.artistas.all()
-
-        cadenaDeTexto = f"{genero.nombre} - ID: {genero.id}\n"
-
-        if artistas.exists():
-            cadenaDeTexto += "Artistas:\n"
-            for artista in artistas:
-                cadenaDeTexto += f"- {artista.id}: {artista.nombre}.\n"
-        else:
-            cadenaDeTexto += "No hay artistas en este género."
-
-        return HttpResponse(cadenaDeTexto)
-    except artista.DoesNotExist:
-        return HttpResponseNotFound("Genero no encontrado")
+    genero = get_object_or_404(Genero, pk=id_genero)
+    contexto = {'genero': genero}
+    return render(request, 'detalleGenero.html', contexto)
 
 def listaArtistas(request):
     artistas = Artista.objects.order_by('nombre')
