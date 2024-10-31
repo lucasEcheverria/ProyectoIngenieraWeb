@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Lista canciones</title>
+    </head>
+    <body>
+        <h1>Lista canciones</h1>
+        <ul>
+        {% for cancion in canciones %}
+            <li>
+                <a href="{% url 'detalleCancion' cancion.id %}">
+                    {{ cancion.nombre }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No hay canciones.</li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>

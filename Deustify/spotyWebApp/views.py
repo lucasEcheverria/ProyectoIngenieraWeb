@@ -31,9 +31,9 @@ def detalleArtista(request, id_artista):
 def listaCanciones(request):
     canciones = Cancion.objects.order_by('nombre')
     contexto = {'canciones' : canciones}
-    return render(request, 'listaCanciones.html', contexto)
+    return render(request, 'listaCancion.html', contexto)
 
 def detalleCancion(request,id_cancion):
-    cancion = get_object_or_404(Artista,pk=id_cancion)
+    cancion = get_object_or_404(Cancion,pk=id_cancion)
     contexto = {'cancion':cancion}
     return render(request,'detalleCancion.html',contexto)
