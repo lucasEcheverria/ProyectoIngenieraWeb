@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Lista artistas</title>
+    </head>
+    <body>
+        <h1>Lista artistas</h1>
+        <ul>
+        {% for artista in artista %}
+            <li>
+                <a href="{% url 'detalleGenero' genero.id %}">
+                    {{ artista.nombre }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No hay artistas.</li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
