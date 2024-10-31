@@ -10,8 +10,8 @@ def index(request):
 
 def listaGeneros(request):
     generos = Genero.objects.order_by('nombre')
-    nombre_generos = ', '.join([genero.nombre for genero in generos])
-    return HttpResponse(nombre_generos)
+    contexto = {'generos' : generos}
+    return render(request, 'listaGenero.html', contexto)
 
 def detalleGeneros(request, id_genero):
     genero = get_object_or_404(Genero, pk=id_genero)

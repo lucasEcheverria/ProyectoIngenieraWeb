@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Lista genero</title>
+    </head>
+    <body>
+        <h1>Lista generos</h1>
+        <ul>
+        {% for genero in generos %}
+            <li>
+                <a href="{% url 'detalleGenero' genero.id %}">
+                    {{ genero.nombre }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No hay generos.</li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
