@@ -14,6 +14,7 @@ class Artista(models.Model):
     nombre = models.CharField(max_length=25)
     id = models.IntegerField(default=0,primary_key=True)
     genero = models.ForeignKey(Genero, related_name="artistas", on_delete=models.CASCADE)
+    imagen_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.nombre
@@ -23,6 +24,7 @@ class Cancion(models.Model):
     nombre = models.CharField(max_length=25)
     fechaLanzamiento = models.DateField()
     artista = models.ForeignKey(Artista, related_name="canciones", on_delete=models.CASCADE)
+    imagen_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.nombre 
