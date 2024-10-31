@@ -5,9 +5,9 @@
     <body>
         <h1>Lista artistas</h1>
         <ul>
-        {% for artista in artista %}
+        {% for artista in artistas %}
             <li>
-                <a href="{% url 'detalleGenero' genero.id %}">
+                <a href="{% url 'detalleArtista' artista.id %}">
                     {{ artista.nombre }}
                 </a>
             </li>
