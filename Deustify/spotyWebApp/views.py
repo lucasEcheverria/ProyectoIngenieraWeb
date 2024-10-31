@@ -24,29 +24,15 @@ def listaArtistas(request):
     return HttpResponse(nombre_artistas)
 
 def detalleArtistas(request, id_artista):
-    try:
-        artista = Artista.objects.get(pk=id_artista)
-        canciones = artista.canciones.all()
-
-        cadenaDeTexto = f"{artista.nombre} - ID: {artista.id}\n"
-
-        if canciones.exists():
-            cadenaDeTexto += "Canciones:\n"
-            for cancion in canciones:
-                cadenaDeTexto += f"- {cancion.nombre}, fecha de lanzamiento: {cancion.fechaLanzamiento}.\n"
-        else:
-            cadenaDeTexto += "No hay canciones creadas por este artista."
-
-        return HttpResponse(cadenaDeTexto)
-    except artista.DoesNotExist:
-        return HttpResponseNotFound("Artista no encontrado")
-
+    artista = get_object_or_404(Artista,pk=id_artista)
+    contexto = {'artista':artista}
+    return render(request,'detalleArtista.html',contexto)
 def listaCanciones(request):
     canciones = Cancion.objects.order_by('id')
     nombre_canciones = ', '.join([cancion.nombre for cancion in canciones])
     return HttpResponse(nombre_canciones)
 
-def detalleCanciones(request,id_cancion):
+def detalleCancion(request,id_cancion):
     try:
         cancion = Cancion.objects.get(pk = id_cancion)
         cadenaDeTexto = f"{cancion.nombre} - ID: {cancion.fechaLanzamiento} - Artista: {cancion.artista}\n"

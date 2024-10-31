@@ -1,14 +1,24 @@
 <html>
-
 <head>
-
-
-
+    <title>Detalle genero</title>
 </head>
-
-
 <body>
-    
-</body>
+    <h1>Detalle del genero</h1>
+    <p>Nombre: {{ artista.nombre }}</p>
+    <p>Genero: {{artista.genero}}</p>
+    <img src="{{artista.imagen_url}}" alt="artista" style="margin-left: 25%; max-width: 50%;">
+    <h2>Canciones:</h2>
+    <ul>
+    {% for cancion in artista.canciones.all %}
+        <li>
+            <a href="{% url 'detalleCancion' cancion.id %}">
+                {{ cancion.nombre }}
+            </a>
+        </li>
+    {% empty %}
+        <li>No hay canciones de este artista.</li>
+    {% endfor %}
+    </ul>
 
+</body>
 </html>
