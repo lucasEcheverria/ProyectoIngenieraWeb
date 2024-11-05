@@ -37,3 +37,9 @@ def detalleCancion(request,id_cancion):
     cancion = get_object_or_404(Cancion,pk=id_cancion)
     contexto = {'cancion':cancion}
     return render(request,'detalleCancion.html',contexto)
+def index(request):
+    generos = Genero.objects.order_by('nombre')
+    artistas = Artista.objects.order_by('nombre')
+    canciones = Cancion.objects.order_by('nombre')
+    contexto = {"generos" : generos, "artistas":artistas,"canciones":canciones}
+    return render(request,'index.html',contexto)
