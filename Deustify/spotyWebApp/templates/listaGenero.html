@@ -1,8 +1,6 @@
-<html>
-    <head>
-        <title>Lista genero</title>
-    </head>
-    <body>
+{%extends 'base.html'%}
+{%block contenido%}
+
         <h1>Lista generos</h1>
         <ul>
         {% for genero in generos %}
@@ -15,5 +13,4 @@
             <li>No hay generos.</li>
         {% endfor %}
         </ul>
-    </body>
-</html>
+{%endblock%}

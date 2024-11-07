@@ -1,8 +1,5 @@
-<html>
-    <head>
-        <title>Lista canciones</title>
-    </head>
-    <body>
+{%extends 'base.html'%}
+{%block contenido%}
         <h1>Lista canciones</h1>
         <ul>
         {% for cancion in canciones %}
@@ -15,5 +12,4 @@
             <li>No hay canciones.</li>
         {% endfor %}
         </ul>
-    </body>
-</html>
+{%endblock%}

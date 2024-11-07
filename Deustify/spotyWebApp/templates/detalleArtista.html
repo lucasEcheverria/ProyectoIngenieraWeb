@@ -1,8 +1,6 @@
-<html>
-<head>
-    <title>Detalle genero</title>
-</head>
-<body>
+{%extends 'base.html'%}
+{%block contenido%}
+
     <h1>Detalle del genero</h1>
     <p>Nombre: {{ artista.nombre }}</p>
     <p>Genero: {{artista.genero}}</p>
@@ -20,5 +18,4 @@
     {% endfor %}
     </ul>
 
-</body>
-</html>
+{%endblock%}

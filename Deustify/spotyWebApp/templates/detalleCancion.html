@@ -1,13 +1,10 @@
-<html>
-<head>
-    <title>Detalle cancion</title>
-</head>
-<body>
+{%extends 'base.html'%}
+{%block contenido%}
+
     <h1>Detalle de la cancion</h1>
     <p>Nombre: {{ cancion.nombre }}</p>
     <p>Artista: {{ cancion.artista}}</p>
     <p>Fecha de lanzamiento: {{cancion.fechaLanzamiento}}</p>
     <img src="{{cancion.imagen_url}}" alt="cancion" style="margin-left: 25%; max-width: 50%;">
 
-</body>
-</html>
+{%endblock%}

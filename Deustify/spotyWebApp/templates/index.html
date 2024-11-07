@@ -1,25 +1,23 @@
-<html>
-    <head>
-        <title>Index</title>
-    </head>
-    <body>
-      <h1>Index</h1>
-      <ul>
-        <li>
-            <a href="{% url 'listaGeneros'  %}">
-                Generos
-            </a>
-        </li>
-        <li>
-            <a href="{% url 'listaArtistas' %}">
-                Artistas
-            </a>
-        </li>
-        <li>
-            <a href="{% url 'listaCanciones'  %}">
-                Canciones
-            </a>
-        </li>
-      </ul>
-    </body>
-</html>
+{%extends 'base.html'%}
+{%block contenido%}
+
+<h1>Index</h1>
+<ul>
+    <li>
+        <a href="{% url 'listaGeneros'  %}">
+            Generos
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'listaArtistas' %}">
+            Artistas
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'listaCanciones'  %}">
+            Canciones
+        </a>
+    </li>
+</ul>
+
+{%endblock%}
