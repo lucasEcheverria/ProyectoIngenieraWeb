@@ -2,8 +2,9 @@
 {%block contenido%}
 
     <h1>Detalle del genero</h1>
-    <p>Nombre: {{ genero.nombre }}</p>
     <p>ID: {{ genero.id }}</p>
+    <p>Nombre: {{ genero.nombre }}</p>
+    <p>{{genero.origen}}</p>
     <h2>Artistas:</h2>
     <ul>
     {% for artista in genero.artistas.all %}
