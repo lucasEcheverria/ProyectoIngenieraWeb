@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404
 from .models import Genero, Artista, Cancion
+from django.views.generic import ListView, DetailView
 # Create your views here.
-
 
 from django.http import HttpResponse,HttpResponseNotFound
 def index(request):
@@ -43,3 +43,36 @@ def index(request):
     canciones = Cancion.objects.order_by('nombre')
     contexto = {"generos" : generos, "artistas":artistas,"canciones":canciones}
     return render(request,'index.html',contexto)
+
+class ListaGeneroView(ListView):
+    model = Genero
+    template_name = 'listaGenero.html'
+    context_object_name = 'generos'
+
+class DetalleGeneroView(DetailView):
+    model = Genero
+    template_name = 'detalleGenero.html'
+    context_object_name = 'genero'
+    pk_url_kwarg = 'id_genero'
+
+class ListaCancionesView(ListView):
+    model = Cancion
+    template_name = 'listaCancion.html'
+    context_object_name = 'canciones'
+
+class DetalleCancionView(DetailView):
+    model = Cancion
+    template_name = 'detalleCancion.html'
+    context_object_name = 'cancion'
+    pk_url_kwarg = 'id_cancion'
+
+class ListaArtistasView(ListView):
+    model = Artista
+    template_name = 'listaArtista.html'
+    context_object_name = 'artistas'
+
+class DetalleArtistaView(DetailView):
+    model = Artista
+    template_name = 'detalleArtista.html'
+    context_object_name = 'artista'
+    pk_url_kwarg = 'id_artista'
