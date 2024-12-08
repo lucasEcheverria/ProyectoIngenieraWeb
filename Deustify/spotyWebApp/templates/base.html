@@ -1,4 +1,5 @@
 {%load static%}
+{% load i18n %}
 <!DOCTYPE HTML>
 <html>
 
@@ -39,10 +40,10 @@
           <div class="sidebar_top"></div>
           <div class="sidebar_item">
             <!-- insert your sidebar items here -->
-            <h3>Latest News</h3>
+            <h3>{% trans "Ultimas noticias" %}</h3>
             <h4>Quevedo retrasa su álbum</h4>
             <h5>November 7st, 2024</h5>
-            <p>Tras el destrozo en Valencia provocado por la Dana, Quevedo ha retrasado la salida de su álbum como muestra de respeto hacia las víctimas.<br /><a href="#">Read more</a></p>
+            <p>{% trans "Bienvenido" %}<br /><a href="#">Read more</a></p>
           </div>
           <div class="sidebar_base"></div>
         </div>
@@ -82,5 +83,16 @@
       <p>Copyright &copy; simplestyle_horizon | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Simple web templates by HTML5</a></p>
     </div>
   </div>
+  <form action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <select name="language">
+        {% for lang_code, lang_name in LANGUAGES %}
+        <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
+            {{ lang_name }}
+        </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Change</button>
+</form>
 </body>
 </html>
