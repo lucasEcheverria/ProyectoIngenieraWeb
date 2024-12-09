@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models # type: ignore
 
 # Create your models here.
 class Genero(models.Model):
@@ -30,3 +30,5 @@ class Cancion(models.Model):
 
     def __str__(self):
         return self.nombre 
+
+
